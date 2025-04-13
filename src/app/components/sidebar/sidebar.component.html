@@ -1,0 +1,45 @@
+<div class="w-full h-full"><!--class="card flex flex-wrap gap-y-4 justify-center m-3 mt-10"-->
+    <p-menu [model]="items" class="fixed w-1/5" styleClass="w-full h-screen">
+        <ng-template #start>
+        <span class="inline-flex items-center gap-1 px-2 py-2">
+            <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg" class="block mx-auto">
+                <path d="..." fill="var(--primary-color)" />
+            </svg>
+            <span class="text-xl font-semibold">
+                PRIME<span class="text-primary">APP</span>
+            </span>
+        </span>
+        </ng-template>
+        <ng-template #submenuheader let-item>
+            <p-inputgroup *ngIf="item.label == 'search_bar'" class="mb-4 mt-1">
+                <input pInputText [(ngModel)]="search_bar" placeholder="Search..." />
+                <p-inputgroup-addon>
+                    <i class="pi pi-search"></i>
+                </p-inputgroup-addon>
+            </p-inputgroup>
+            <span *ngIf="item.label != 'search_bar'" class="text-primary font-bold">{{ item.label }}</span>
+        </ng-template>
+        <ng-template #item let-item>
+            <div *ngIf="item.label.includes('select_')" class="w-5/6 ml-3 pb-2">
+                <div class="flex">
+                    <span class="block w-full">Card {{item.displayName}}:</span>
+                    <span class="cursor-pointer reset" (click)="item.selected = '';syncSubject(item.selected, item.displayName)">Reset</span>
+                </div>
+                <p-select
+                        [options]="item.array.value"
+                        [(ngModel)]="item.selected"
+                        [placeholder] = "'Select a ' + item.displayName"
+                        (ngModelChange)="syncSubject($event, item.displayName)"
+                        class="w-full"
+                >
+                    <ng-template #empty>Loading...</ng-template>
+                </p-select>
+            </div>
+            <a *ngIf="!item.label.includes('select_')" pRipple class="flex items-center p-menu-item-link ml-1">
+                <span [class]="item.icon"></span>
+                <span class="ml-2">{{ item.label }}</span>
+                <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
+            </a>
+        </ng-template>
+    </p-menu>
+</div>

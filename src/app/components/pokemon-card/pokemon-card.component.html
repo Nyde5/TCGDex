@@ -1,0 +1,8 @@
+<p-card>
+    <ng-template #header>
+        <div class="ml-10 mr-10 mt-5">
+            <img class="block ml-auto mr-auto" [src]="card.image ? card.image+'/low.webp' : ''" [alt]="card.localId">
+        </div>
+    </ng-template>
+    <ng-template #title> {{ card.name }} </ng-template>
+</p-card>
