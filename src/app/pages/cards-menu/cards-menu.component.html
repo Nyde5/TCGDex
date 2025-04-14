@@ -1,3 +1,4 @@
-<div class="w-full grid grid-cols-4 gap-x-15 gap-y-8">
-    <app-pokemon-card *ngFor="let card of cards" [card]="card"></app-pokemon-card>
+<div class="w-full grid grid-cols-4 gap-x-15 gap-y-8 max-h-screen overflow-y-scroll overflow-x-hidden">
+    <app-pokemon-card class="" *ngFor="let card of cards" [card]="card" (click)="cardInfos(card)"></app-pokemon-card>
 </div>
+

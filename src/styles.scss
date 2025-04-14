@@ -1,2 +1,7 @@
-@use "primeicons/primeicons.css";
 @use "tailwindcss";
+@use "primeicons/primeicons.css";
+
+body {
+  max-height: 100%;
+  overflow: clip;
+}

@@ -22,4 +22,8 @@ export class CardsMenuComponent implements OnInit {
             this.cards = cards;
         });
     }
+
+  cardInfos(card: PokeCard) {
+    console.log("works on " + card.name);
+  }
 }

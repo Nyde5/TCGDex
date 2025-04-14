@@ -14,4 +14,8 @@ export class InfoService {
   getAllSuffix() {
     return this.http.get<string[]>("https://api.tcgdex.net/v2/en/suffixes")
   }
+
+  getAllCategories() {
+    return this.http.get<string[]>("https://api.tcgdex.net/v2/en/categories")
+  }
 }
