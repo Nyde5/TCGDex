@@ -1,19 +1,23 @@
-<div class="w-full h-full">
+<div class="w-full h-full pt-14">
     <p-menu [model]="items" class="w-1/5" styleClass="w-full h-full">
         <ng-template #submenuheader let-item>
+            <button *ngIf="item.label == 'back'" id="previous_page" pRipple class="w-full flex items-center p-menu-item-link ml-1 text-lg transition duration-100 ease-in-out" (click)="back()">
+                <span class="pi pi-reply"></span>
+                <span class="ml-2">Back</span>
+            </button>
             <p-inputgroup *ngIf="item.label == 'search_bar'" class="mb-4 mt-1">
                 <input pInputText [(ngModel)]="item.selected" (ngModelChange)="syncSubject(item.selected, item.associatedService)" placeholder="Search..." />
                 <p-inputgroup-addon>
                     <i class="pi pi-search"></i>
                 </p-inputgroup-addon>
             </p-inputgroup>
-            <span *ngIf="item.label != 'search_bar'" class="text-primary font-bold">{{ item.label }}</span>
+            <span *ngIf="item.label != 'search_bar' && item.label != 'back'" class="text-primary font-bold">{{ item.label }}</span>
         </ng-template>
         <ng-template #item let-item>
             <div *ngIf="item.label.includes('select_')" class="w-5/6 ml-3 pb-2">
                 <div class="flex">
                     <span class="block w-full">Card {{item.displayName}}:</span>
-                    <span class="cursor-pointer reset" (click)="item.selected = '';syncSubject(item.selected, item.associatedService)">Reset</span>
+                    <span class="cursor-pointer reset transition duration-200 ease-in-out" (click)="item.selected = '';syncSubject(item.selected, item.associatedService)">Reset</span>
                 </div>
                 <p-select
                         [options]="item.array.value"
@@ -25,10 +29,9 @@
                     <ng-template #empty>Loading...</ng-template>
                 </p-select>
             </div>
-            <a *ngIf="!item.label.includes('select_')" pRipple class="flex items-center p-menu-item-link ml-1">
+            <a *ngIf="!item.label.includes('select_') && item.label != 'back'" pRipple class="flex items-center p-menu-item-link ml-1">
                 <span [class]="item.icon"></span>
                 <span class="ml-2">{{ item.label }}</span>
-                <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
             </a>
         </ng-template>
     </p-menu>

@@ -53,14 +53,26 @@ export class SidebarService {
               selected: this.selectedCardCategory,
               associatedService: this.cardsService.category,
             },
-            {
+            /*{
               label: 'Test Button',
               icon: 'pi pi-user',
-            }
+            }*/
           ]
         },
         {
           separator: true
+        }
+      ],
+      "card-info": [
+        {
+          label: "back",
+          items: []
+        },
+        {
+          separator: true
+        },
+        {
+          label: "test"
         }
       ]
     }
@@ -87,7 +99,7 @@ export class SidebarService {
         const url = event.urlAfterRedirects;
 
         // Rimuove eventuali slash iniziali e divide la stringa
-        const segments = url.replace(/^\/+/, '').split('/');
+        const segments = url.replace(/^\/+/, '').split(/[/;]+/);
         const page = segments[0];
 
         // Usa il nome della pagina per accedere alla configurazione nel servizio

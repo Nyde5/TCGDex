@@ -1,0 +1,8 @@
+p-megamenu{
+  position: fixed;
+  width: 100%;
+  ::ng-deep :first-child {
+    border: 0;
+  }
+  z-index: 100;
+}

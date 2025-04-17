@@ -5,9 +5,8 @@ import {FormsModule} from "@angular/forms";
 import {InputText} from "primeng/inputtext";
 import {Menu} from "primeng/menu";
 import {Ripple} from "primeng/ripple";
-import {Badge} from "primeng/badge";
 import {Select} from "primeng/select";
-import {NgIf} from "@angular/common";
+import {NgIf, Location} from "@angular/common";
 import {SidebarService} from '../../services/sidebar/sidebar.service';
 import {BehaviorSubject} from 'rxjs';
 
@@ -20,7 +19,6 @@ import {BehaviorSubject} from 'rxjs';
     InputText,
     Menu,
     Ripple,
-    Badge,
     Select,
     NgIf,
   ],
@@ -30,7 +28,7 @@ import {BehaviorSubject} from 'rxjs';
 export class SidebarComponent {
   items!: any[];
 
-  constructor(private sidebarService: SidebarService) {
+  constructor(private sidebarService: SidebarService, private _location: Location) {
   }
 
   ngOnInit(): void {
@@ -41,5 +39,10 @@ export class SidebarComponent {
 
   syncSubject($event: string, behaviorSubject: BehaviorSubject<string>) {
     behaviorSubject.next($event);
+  }
+
+  back() {
+    console.log("called")
+    this._location.back();
   }
 }

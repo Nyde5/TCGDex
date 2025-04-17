@@ -3,6 +3,7 @@ import {NgForOf} from "@angular/common";
 import {PokemonCardComponent} from "../../components/pokemon-card/pokemon-card.component";
 import {CardsService} from "../../services/cards/cards.service";
 import {PokeCard} from "../../models/interfaces/card.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cards-menu',
@@ -16,7 +17,7 @@ import {PokeCard} from "../../models/interfaces/card.interface";
 export class CardsMenuComponent implements OnInit {
     cards!: PokeCard[]
 
-    constructor(private cardsService: CardsService) {}
+    constructor(private cardsService: CardsService, private router: Router) {}
     ngOnInit() {
         this.cardsService.getAllCards().subscribe(cards =>{
             this.cards = cards;
@@ -24,6 +25,6 @@ export class CardsMenuComponent implements OnInit {
     }
 
   cardInfos(card: PokeCard) {
-    console.log("works on " + card.name);
+    this.router.navigate(['/card-info', card]);
   }
 }

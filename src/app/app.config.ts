@@ -7,6 +7,7 @@ import {provideAnimationsAsync} from "@angular/platform-browser/animations/async
 import {providePrimeNG} from "primeng/config";
 import {PokeTheme} from "./poketheme";
 import {provideHttpClient} from "@angular/common/http";
+import {AngularSvgIconModule, provideAngularSvgIcon} from "angular-svg-icon";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +20,7 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: PokeTheme
       }
-    })
+    }),
+    provideAngularSvgIcon(),
   ]
 };

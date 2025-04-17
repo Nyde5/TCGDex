@@ -1,3 +1,14 @@
 .reset:hover {
   color: var(--color-amber-400) !important;
 }
+
+p-menu::ng-deep div {
+  border: 0;
+}
+
+#previous_page {
+  border-radius: var(--borderRadius-md);
+}
+#previous_page:hover{
+  background-color: var(--p-menu-item-focus-background) !important;
+}

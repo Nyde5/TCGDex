@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MegaMenuItem } from 'primeng/api';
 import { MegaMenu } from 'primeng/megamenu';
-import {Button, ButtonModule} from 'primeng/button';
-import {CommonModule, NgClass, NgIf} from '@angular/common';
-import {Avatar, AvatarModule} from 'primeng/avatar';
-import {RouterOutlet} from '@angular/router';
+import {Button} from 'primeng/button';
+import {NgClass, NgIf} from '@angular/common';
+import {Avatar} from 'primeng/avatar';
 import {Ripple} from 'primeng/ripple';
+import {SvgIconComponent} from "angular-svg-icon";
 
 @Component({
   selector: 'app-navbar',
@@ -16,12 +16,14 @@ import {Ripple} from 'primeng/ripple';
     Button,
     Avatar,
     Ripple,
+    SvgIconComponent,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  items: MegaMenuItem[] | undefined;
+  items!: MegaMenuItem[]
+
 
   ngOnInit() {
     this.items = [
